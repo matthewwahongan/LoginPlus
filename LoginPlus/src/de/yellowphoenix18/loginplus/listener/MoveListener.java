@@ -14,7 +14,7 @@ public class MoveListener implements Listener {
 	public void on(PlayerMoveEvent e) {
 		Player p = e.getPlayer();
 		
-		if(PluginUtils.login.contains(p) || PluginUtils.register.contains(p)) {
+		if(PluginUtils.login.contains(p) || PluginUtils.register.contains(p) || PluginUtils.captcha.contains(p)) {
 			e.setTo(new Location(e.getFrom().getWorld(), e.getFrom().getX(), e.getTo().getY(), e.getFrom().getZ(), (float) e.getTo().getYaw(), (float) e.getTo().getPitch()));
 		}
 	}

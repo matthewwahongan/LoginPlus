@@ -46,6 +46,8 @@ public class ChatListener implements Listener {
 			PasswordConfig.setPassword(p.getUniqueId().toString(), EncryptionUtils.hashPassword(password, MainConfig.type), MainConfig.type.toString());
 			VersionUtils.sendTitle(p, 20, 100, 20, MessagesConfig.title_register_success_title, MessagesConfig.title_register_success_subtitle);
 			PluginUtils.register.remove(p);
+		} else if(PluginUtils.captcha.contains(p)) {
+			e.setCancelled(true);
 		}
 	}
 

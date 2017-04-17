@@ -14,7 +14,7 @@ public class InteractListener implements Listener {
 	public void on(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
 		if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) {
-			if(PluginUtils.login.contains(p) || PluginUtils.register.contains(p)) {
+			if(PluginUtils.login.contains(p) || PluginUtils.register.contains(p) || PluginUtils.captcha.contains(p)) {
 				e.setCancelled(true);
 			}
 		}

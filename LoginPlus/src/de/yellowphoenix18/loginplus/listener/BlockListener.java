@@ -13,7 +13,7 @@ public class BlockListener implements Listener {
 	@EventHandler
 	public void on(BlockBreakEvent e) {
 		Player p = e.getPlayer();
-		if(PluginUtils.login.contains(p) || PluginUtils.register.contains(p)) {
+		if(PluginUtils.login.contains(p) || PluginUtils.register.contains(p) || PluginUtils.captcha.contains(p)) {
 			e.setCancelled(true);
 		}
 	}
@@ -21,7 +21,7 @@ public class BlockListener implements Listener {
 	@EventHandler
 	public void on(BlockPlaceEvent e) {
 		Player p = e.getPlayer();
-		if(PluginUtils.login.contains(p) || PluginUtils.register.contains(p)) {
+		if(PluginUtils.login.contains(p) || PluginUtils.register.contains(p) || PluginUtils.captcha.contains(p)) {
 			e.setCancelled(true);
 		}
 	}

@@ -17,7 +17,7 @@ public class LoginListener implements Listener {
 	public void on(PlayerPreLoginEvent e) {
 		String player = e.getName();
 		for(Player all : Bukkit.getOnlinePlayers()) {
-			if(all.getName().equalsIgnoreCase(player)) {
+			if(all.getName().toLowerCase().equalsIgnoreCase(player.toLowerCase())) {
 				e.disallow(null, MessagesConfig.prefix + MessagesConfig.already_logged_in);
 				break;
 			}

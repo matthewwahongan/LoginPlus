@@ -24,6 +24,7 @@ public class PluginUtils {
 	
 	
 	public static List<Player> login = new ArrayList<Player>();
+	public static List<Player> captcha = new ArrayList<Player>();
 	public static List<Player> kick = new ArrayList<Player>();
 	public static List<Player> register = new ArrayList<Player>();
 	public static List<Player> timer_rem = new ArrayList<Player>();
@@ -84,7 +85,14 @@ public class PluginUtils {
 					}
 				}
 				for(Player all : kick) {
-					all.kickPlayer(MessagesConfig.prefix + MessagesConfig.ban_inform.replace("%Time%", MainConfig.login_failed_ban_time + ""));
+					if(MainConfig.login_failed_commands_enabled == true) {
+						for(String command : MainConfig.login_failed_commands) {
+							Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(), command.replace("%Player%", all.getName()));
+						}
+					}
+					if(MainConfig.login_failed_kick == true) {
+						all.kickPlayer(MessagesConfig.prefix + MessagesConfig.ban_inform.replace("%Time%", MainConfig.login_failed_ban_time + ""));
+					}
 				}
 				kick.clear();
 				for(String banned : banned_ips.keySet()) {

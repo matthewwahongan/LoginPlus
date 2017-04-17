@@ -14,7 +14,7 @@ public class CommandListener implements Listener {
 	public void on(PlayerCommandPreprocessEvent e) {
 		Player p = e.getPlayer();
 		
-		if(PluginUtils.login.contains(p) || PluginUtils.register.contains(p)) {
+		if(PluginUtils.login.contains(p) || PluginUtils.register.contains(p) || PluginUtils.captcha.contains(p)) {
 			if(e.getMessage().startsWith("/")) {
 				e.setCancelled(true);
 			}

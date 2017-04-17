@@ -2,6 +2,8 @@ package de.yellowphoenix18.loginplus.config;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -20,18 +22,31 @@ public class MainConfig {
 	public static boolean reconnect_time_enabled = true;
 	public static int reconnect_time = 30;
 	public static boolean login_failed_ban = true;
+	public static boolean login_failed_kick = true;
 	public static int login_failed_ban_time = 120;
+	public static boolean login_failed_commands_enabled = false;
+	public static List<String> login_failed_commands = new ArrayList<String>();
+	
+	public static boolean login_captcha = false;
 	
 	
 	public static void load() {
+		login_failed_commands.add("deop %Player%");
+		login_failed_commands.add("kick %Player%");
+		
+		
 		timer_enabled = setObject("Timer.Enabled", timer_enabled);
 		timer_time = setObject("Timer.Time", timer_time);
 		type = EncryptionType.valueOf(setObject("Encryption.Type", type.toString()));
 		login_attempts = setObject("Login.Max-Attempts", login_attempts);
 		login_failed_ban = setObject("Login.Ban.Enabled", login_failed_ban);
+		login_failed_kick = setObject("Login.Kick.Enabled", login_failed_kick);
 		login_failed_ban_time = setObject("Login.Ban.Time", login_failed_ban_time);
+		login_failed_commands_enabled = setObject("Login.Commands.Enabled", login_failed_commands_enabled);
+		login_failed_commands = setObject("Login.Commands.Commands", login_failed_commands);
 		reconnect_time_enabled = setObject("Reconnect-Time.Enabled", reconnect_time_enabled);
 		reconnect_time = setObject("Reconnect-Time.Time", reconnect_time);
+		login_captcha = setObject("Captcha.Enabled", login_captcha);
 	}
 
 	public static int setObject(String path, int obj) {
@@ -57,6 +72,16 @@ public class MainConfig {
 	public static boolean setObject(String path, boolean obj) {
 		if(cfg.contains(path)) {
 			return cfg.getBoolean(path);
+		} else {
+			cfg.set(path, obj);
+			save();
+			return obj;
+		}
+	}
+	
+	public static List<String> setObject(String path, List<String> obj) {
+		if(cfg.contains(path)) {
+			return cfg.getStringList(path);
 		} else {
 			cfg.set(path, obj);
 			save();

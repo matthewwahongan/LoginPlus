@@ -17,6 +17,7 @@ public class MessagesConfig {
 	public static String timer_over = "&7The Timer is up! You can reconnect and try again in &c%Reconnect-Time% &7Seconds!";
 	public static String timer_inform = "&7You have &c%Time% &7Seconds to log into your Account";
 	public static String ban_inform = "&7You have been banned for &c%Time% &7Seconds";
+	public static String captcha_failed = "&cCaptcha failed";
 	
 	public static String title_login_title = "&cPlease log in";
 	public static String title_login_subtitle = "&6Enter your password into the Chat";
@@ -29,11 +30,17 @@ public class MessagesConfig {
 	public static String title_login_failed_title = "&cIncorrect Password";
 	public static String title_login_failed_subtitle = "&7You have &c%Attempts% &7Attempts left";
 	
+	public static String captcha_name = "&4Captcha";
+	public static String captcha_dont_click = "&7Dont click";
+	public static String captcha_change = "&4Change";
+	public static String captcha_changed = "&aChanged";
+	
 	public static void load() {
 		prefix = fixColors(setObject("Global.Prefix", prefix));
 		already_logged_in = fixColors(setObject("Error.Already-LoggedIn", already_logged_in));
 		banned = fixColors(setObject("Error.Banned", banned));
 		timer_over = fixColors(setObject("Error.Timer-Over", timer_over));
+		captcha_failed = fixColors(setObject("Error.Captcha-Failed", captcha_failed));
 		timer_inform = fixColors(setObject("Timer.Info", timer_inform));
 		ban_inform = fixColors(setObject("Ban.Info", ban_inform));
 		
@@ -47,6 +54,11 @@ public class MessagesConfig {
 		title_login_success_subtitle = fixColors(setObject("Title.Login-Success.SubTitle", title_login_success_subtitle));
 		title_login_failed_title = fixColors(setObject("Title.Login-Failed.Title", title_login_failed_title));
 		title_login_failed_subtitle = fixColors(setObject("Title.Login-Failed.SubTitle", title_login_failed_subtitle));
+		
+		captcha_name = fixColors(setObject("Captcha.Inventory.Name", captcha_name));
+		captcha_dont_click = fixColors(setObject("Captcha.Inventory.Dont-Click", captcha_dont_click));
+		captcha_change = fixColors(setObject("Captcha.Inventory.Change", captcha_change));
+		captcha_changed = fixColors(setObject("Captcha.Inventory.Changed", captcha_changed));
 	}
 	
 	public static String fixColors(String code) {
