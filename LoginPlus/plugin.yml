@@ -1,0 +1,7 @@
+name: LoginPlus
+author: YellowPhoenix18
+version: 1.0
+
+main: de.yellowphoenix18.loginplus.LoginPlus
+
+commands:
