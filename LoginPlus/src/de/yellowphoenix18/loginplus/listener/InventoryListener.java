@@ -28,29 +28,31 @@ public class InventoryListener implements Listener {
 			if(!e.getInventory().getName().equalsIgnoreCase(MessagesConfig.captcha_name)) {
 				e.setCancelled(true);
 			} else {
-				if(e.getCurrentItem().hasItemMeta()) {
-					if(e.getCurrentItem().getItemMeta().hasDisplayName()) {
-						String disp = e.getCurrentItem().getItemMeta().getDisplayName();
-						if(disp.equalsIgnoreCase(MessagesConfig.captcha_dont_click)) {
-							CaptchaUtils.captcha_parts.remove(p);
-							p.kickPlayer(MessagesConfig.prefix + MessagesConfig.captcha_failed);
-						} else if(disp.equalsIgnoreCase(MessagesConfig.captcha_change)) {
-							int slot = e.getSlot();
-							e.getInventory().setItem(slot, ItemUtils.DyeCreator(MessagesConfig.captcha_changed, null, null, 1, DyeColor.LIME));
-							CaptchaUtils.captcha_parts.put(p, CaptchaUtils.captcha_parts.get(p)-1);
-							if(CaptchaUtils.captcha_parts.get(p) <= 0) {
-								PluginUtils.captcha.remove(p);
-								p.closeInventory();
-								if(PasswordConfig.isSet(p.getUniqueId().toString())) {
-									VersionUtils.sendTitle(p, 20, 100, 20, MessagesConfig.title_login_title, MessagesConfig.title_login_subtitle);
-									PluginUtils.login.add(p);
-									if(MainConfig.timer_enabled) {
-										PluginUtils.timer.put(p, 0);
+				if(e.getCurrentItem() != null) {
+					if(e.getCurrentItem().hasItemMeta()) {
+						if(e.getCurrentItem().getItemMeta().hasDisplayName()) {
+							String disp = e.getCurrentItem().getItemMeta().getDisplayName();
+							if(disp.equalsIgnoreCase(MessagesConfig.captcha_dont_click)) {
+								CaptchaUtils.captcha_parts.remove(p);
+								p.kickPlayer(MessagesConfig.prefix + MessagesConfig.captcha_failed);
+							} else if(disp.equalsIgnoreCase(MessagesConfig.captcha_change)) {
+								int slot = e.getSlot();
+								e.getInventory().setItem(slot, ItemUtils.DyeCreator(MessagesConfig.captcha_changed, null, null, 1, DyeColor.LIME));
+								CaptchaUtils.captcha_parts.put(p, CaptchaUtils.captcha_parts.get(p)-1);
+								if(CaptchaUtils.captcha_parts.get(p) <= 0) {
+									PluginUtils.captcha.remove(p);
+									p.closeInventory();
+									if(PasswordConfig.isSet(p.getUniqueId().toString())) {
+										VersionUtils.sendTitle(p, 20, 100, 20, MessagesConfig.title_login_title, MessagesConfig.title_login_subtitle);
+										PluginUtils.login.add(p);
+										if(MainConfig.timer_enabled) {
+											PluginUtils.timer.put(p, 0);
+										}
+										PluginUtils.attempts.put(p, MainConfig.login_attempts);
+									} else {
+										VersionUtils.sendTitle(p, 20, 100, 20, MessagesConfig.title_register_title, MessagesConfig.title_register_subtitle);
+										PluginUtils.register.add(p);
 									}
-									PluginUtils.attempts.put(p, MainConfig.login_attempts);
-								} else {
-									VersionUtils.sendTitle(p, 20, 100, 20, MessagesConfig.title_register_title, MessagesConfig.title_register_subtitle);
-									PluginUtils.register.add(p);
 								}
 							}
 						}
