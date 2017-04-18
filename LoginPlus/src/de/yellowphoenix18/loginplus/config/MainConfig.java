@@ -27,7 +27,9 @@ public class MainConfig {
 	public static boolean login_failed_commands_enabled = false;
 	public static List<String> login_failed_commands = new ArrayList<String>();
 	
-	public static boolean login_captcha = false;
+	public static boolean captcha = false;
+	public static boolean captcha_on_login = true;
+	public static boolean captcha_on_register = true;
 	
 	
 	public static void load() {
@@ -46,7 +48,9 @@ public class MainConfig {
 		login_failed_commands = setObject("Login.Commands.Commands", login_failed_commands);
 		reconnect_time_enabled = setObject("Reconnect-Time.Enabled", reconnect_time_enabled);
 		reconnect_time = setObject("Reconnect-Time.Time", reconnect_time);
-		login_captcha = setObject("Captcha.Enabled", login_captcha);
+		captcha = setObject("Captcha.Enabled", captcha);
+		captcha_on_login = setObject("Captcha.Login", captcha_on_login);
+		captcha_on_register = setObject("Captcha.Register", captcha_on_register);
 	}
 
 	public static int setObject(String path, int obj) {

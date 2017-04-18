@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 
 import de.yellowphoenix18.loginplus.LoginPlus;
+import de.yellowphoenix18.loginplus.commands.ChangePasswordCommand;
 import de.yellowphoenix18.loginplus.config.MainConfig;
 import de.yellowphoenix18.loginplus.config.MessagesConfig;
 import de.yellowphoenix18.loginplus.listener.BlockListener;
@@ -25,6 +26,7 @@ public class PluginUtils {
 	
 	public static List<Player> login = new ArrayList<Player>();
 	public static List<Player> captcha = new ArrayList<Player>();
+	public static List<Player> changepw = new ArrayList<Player>();
 	public static List<Player> kick = new ArrayList<Player>();
 	public static List<Player> register = new ArrayList<Player>();
 	public static List<Player> timer_rem = new ArrayList<Player>();
@@ -66,7 +68,7 @@ public class PluginUtils {
 	}
 	
 	public static void loadCommands() {
-		
+		LoginPlus.m.getCommand("changepw").setExecutor(new ChangePasswordCommand());
 	}
 	
 	public static void loadConfigs() {

@@ -21,6 +21,9 @@ public class LoginPlus extends JavaPlugin {
 		for(Player all : PluginUtils.register) {
 			all.kickPlayer("");
 		}
+		for(Player all : PluginUtils.captcha) {
+			all.kickPlayer("");
+		}
 	}
 
 }

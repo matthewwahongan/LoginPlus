@@ -29,6 +29,10 @@ public class MessagesConfig {
 	public static String title_login_success_subtitle = "&7You can play now";
 	public static String title_login_failed_title = "&cIncorrect Password";
 	public static String title_login_failed_subtitle = "&7You have &c%Attempts% &7Attempts left";
+	public static String title_changepw_title = "&cChange password";
+	public static String title_changepw_subtitle = "&6Enter your password into the Chat";
+	public static String title_changepw_success_title = "&aPassword has been changed";
+	public static String title_changepw_success_subtitle = "&6Your Password has successfully been changed";
 	
 	public static String captcha_name = "&4Captcha";
 	public static String captcha_dont_click = "&7Dont click";
@@ -54,6 +58,10 @@ public class MessagesConfig {
 		title_login_success_subtitle = fixColors(setObject("Title.Login-Success.SubTitle", title_login_success_subtitle));
 		title_login_failed_title = fixColors(setObject("Title.Login-Failed.Title", title_login_failed_title));
 		title_login_failed_subtitle = fixColors(setObject("Title.Login-Failed.SubTitle", title_login_failed_subtitle));
+		title_changepw_title = fixColors(setObject("Title.Change-Password.Title", title_changepw_title));
+		title_changepw_subtitle = fixColors(setObject("Title.Change-Password.SubTitle", title_changepw_subtitle));
+		title_changepw_success_title = fixColors(setObject("Title.Change-Password-Success.Title", title_changepw_success_title));
+		title_changepw_success_subtitle = fixColors(setObject("Title.Change-Password-Success.SubTitle", title_changepw_success_subtitle));
 		
 		captcha_name = fixColors(setObject("Captcha.Inventory.Name", captcha_name));
 		captcha_dont_click = fixColors(setObject("Captcha.Inventory.Dont-Click", captcha_dont_click));
