@@ -20,6 +20,7 @@ import de.yellowphoenix18.loginplus.listener.InventoryListener;
 import de.yellowphoenix18.loginplus.listener.JoinListener;
 import de.yellowphoenix18.loginplus.listener.LoginListener;
 import de.yellowphoenix18.loginplus.listener.MoveListener;
+import de.yellowphoenix18.yellowphoenix18stats.YellowPhoenix18Stats;
 
 public class PluginUtils {
 	
@@ -48,6 +49,7 @@ public class PluginUtils {
 		loadTimer();
 		loadListener();
 		loadCommands();
+		new YellowPhoenix18Stats("sw9Z6c1f", LoginPlus.m);
 	}
 	
 	public static String getServerVersion() {
