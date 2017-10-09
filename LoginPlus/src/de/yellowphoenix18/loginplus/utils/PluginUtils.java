@@ -40,16 +40,16 @@ public class PluginUtils {
 	public static void setUp() {
 		version = getServerVersion();
 		if(!version.equalsIgnoreCase("v1_8_R1") && !version.equalsIgnoreCase("v1_8_R2") && !version.equalsIgnoreCase("v1_8_R3") && !version.equalsIgnoreCase("v1_9_R1") &&
-		   !version.equalsIgnoreCase("v1_9_R2") && !version.equalsIgnoreCase("v1_10_R1") && !version.equalsIgnoreCase("v1_11_R1")) {
+		   !version.equalsIgnoreCase("v1_9_R2") && !version.equalsIgnoreCase("v1_10_R1") && !version.equalsIgnoreCase("v1_11_R1") && !version.equalsIgnoreCase("v1_12_R1")) {
 			System.out.println("[LoginPlus] Your Spigot-Version is not supported, disabling LoginPlus...");
 			Bukkit.getPluginManager().disablePlugin(LoginPlus.m);
+		} else {
+			loadConfigs();
+			loadTimer();
+			loadListener();
+			loadCommands();
+			new YellowPhoenix18Stats("sw9Z6c1f", LoginPlus.m);	
 		}
-		
-		loadConfigs();
-		loadTimer();
-		loadListener();
-		loadCommands();
-		new YellowPhoenix18Stats("sw9Z6c1f", LoginPlus.m);
 	}
 	
 	public static String getServerVersion() {

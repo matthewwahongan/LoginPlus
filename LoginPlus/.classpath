@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="C:/spigot-1.9.4.jar"/>
 	<classpathentry kind="lib" path="C:/spigot-1.10.2.jar"/>
 	<classpathentry kind="lib" path="C:/spigot-1.11.jar"/>
+	<classpathentry kind="lib" path="C:/spigot-1.12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
