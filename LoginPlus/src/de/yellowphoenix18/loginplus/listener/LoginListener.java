@@ -44,14 +44,16 @@ public class LoginListener implements Listener {
 			Bukkit.getScheduler().runTaskAsynchronously(LoginPlus.m, new Runnable() {
 				@Override
 				public void run() {
-					AccountObject ao;
-					try {
-						ao = new AccountObject(uuid, MYSQLMethods.getPassword(uuid), EncryptionType.valueOf(MYSQLMethods.getHashType(uuid)), MYSQLMethods.isPremium(uuid));
-						if(MYSQLMethods.isInMYSQLTable(uuid)) {
-							DataTranslator.accounts.put(uuid, ao);
+					if(MYSQLMethods.isInMYSQLTable(uuid)) {
+						AccountObject ao;
+						try {
+							ao = new AccountObject(uuid, MYSQLMethods.getPassword(uuid), EncryptionType.valueOf(MYSQLMethods.getHashType(uuid)), MYSQLMethods.isPremium(uuid));
+							if(MYSQLMethods.isInMYSQLTable(uuid)) {
+								DataTranslator.accounts.put(uuid, ao);
+							}
+						} catch (SQLException e1) {
+							e1.printStackTrace();
 						}
-					} catch (SQLException e1) {
-						e1.printStackTrace();
 					}
 				}			
 			});
