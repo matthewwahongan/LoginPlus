@@ -17,6 +17,7 @@ import de.yellowphoenix18.loginplus.config.PasswordConfig;
 import de.yellowphoenix18.loginplus.utils.CaptchaUtils;
 import de.yellowphoenix18.loginplus.utils.ItemUtils;
 import de.yellowphoenix18.loginplus.utils.PluginUtils;
+import de.yellowphoenix18.loginplus.utils.PremiumCheck;
 import de.yellowphoenix18.loginplus.versionutils.VersionUtils;
 
 public class InventoryListener implements Listener {
@@ -43,12 +44,20 @@ public class InventoryListener implements Listener {
 									PluginUtils.captcha.remove(p);
 									p.closeInventory();
 									if(PasswordConfig.isSet(p.getUniqueId().toString())) {
-										VersionUtils.sendTitle(p, 20, 100, 20, MessagesConfig.title_login_title, MessagesConfig.title_login_subtitle);
-										PluginUtils.login.add(p);
-										if(MainConfig.timer_enabled) {
-											PluginUtils.timer.put(p, 0);
+										if(PasswordConfig.getPremium(p.getUniqueId().toString())) {
+											if(!PremiumCheck.isPremium(p)) {
+												p.kickPlayer(MessagesConfig.prefix + MessagesConfig.no_premium);
+											}
+											PluginUtils.login.remove(p);
+											PluginUtils.timer.remove(p);
+										} else {
+											VersionUtils.sendTitle(p, 20, 100, 20, MessagesConfig.title_login_title, MessagesConfig.title_login_subtitle);
+											PluginUtils.login.add(p);
+											if(MainConfig.timer_enabled) {
+												PluginUtils.timer.put(p, 0);
+											}
+											PluginUtils.attempts.put(p, MainConfig.login_attempts);
 										}
-										PluginUtils.attempts.put(p, MainConfig.login_attempts);
 									} else {
 										VersionUtils.sendTitle(p, 20, 100, 20, MessagesConfig.title_register_title, MessagesConfig.title_register_subtitle);
 										PluginUtils.register.add(p);

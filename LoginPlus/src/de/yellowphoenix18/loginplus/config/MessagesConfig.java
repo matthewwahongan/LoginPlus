@@ -18,6 +18,9 @@ public class MessagesConfig {
 	public static String timer_inform = "&7You have &c%Time% &7Seconds to log into your Account";
 	public static String ban_inform = "&7You have been banned for &c%Time% &7Seconds";
 	public static String captcha_failed = "&cCaptcha failed";
+	public static String no_permission = "&cYou're not permitted to use this command";
+	public static String wrong_arguments = "&cWrong Arguments";
+	public static String player_offline = "&cThis player is offline!";
 	
 	public static String title_login_title = "&cPlease log in";
 	public static String title_login_subtitle = "&6Enter your password into the Chat";
@@ -34,6 +37,10 @@ public class MessagesConfig {
 	public static String title_changepw_success_title = "&aPassword has been changed";
 	public static String title_changepw_success_subtitle = "&6Your Password has successfully been changed";
 	
+	public static String premium_disabled = "&6Premium&7-Function has been &cdisabled";
+	public static String premium_enabled = "&6Premium&7-Function has been &aenabled";
+	public static String no_premium = "&7Your Account is not an Premium-Account!";
+	
 	public static String captcha_name = "&4Captcha";
 	public static String captcha_dont_click = "&7Dont click";
 	public static String captcha_change = "&4Change";
@@ -47,6 +54,9 @@ public class MessagesConfig {
 		captcha_failed = fixColors(setObject("Error.Captcha-Failed", captcha_failed));
 		timer_inform = fixColors(setObject("Timer.Info", timer_inform));
 		ban_inform = fixColors(setObject("Ban.Info", ban_inform));
+		no_permission = fixColors(setObject("Error.Permission", no_permission));
+		wrong_arguments = fixColors(setObject("Error.Arguments", wrong_arguments));
+		player_offline = fixColors(setObject("Error.Player_Offline", player_offline));
 		
 		title_login_title = fixColors(setObject("Title.Login.Title", title_login_title));
 		title_login_subtitle = fixColors(setObject("Title.Login.SubTitle", title_login_subtitle));
@@ -67,6 +77,10 @@ public class MessagesConfig {
 		captcha_dont_click = fixColors(setObject("Captcha.Inventory.Dont-Click", captcha_dont_click));
 		captcha_change = fixColors(setObject("Captcha.Inventory.Change", captcha_change));
 		captcha_changed = fixColors(setObject("Captcha.Inventory.Changed", captcha_changed));
+		
+		premium_disabled = fixColors(setObject("Premium.Disabled", premium_disabled)); 
+		premium_enabled = fixColors(setObject("Premium.Enabled", premium_enabled)); 
+		no_premium = fixColors(setObject("Premium.No", no_premium));
 	}
 	
 	public static String fixColors(String code) {

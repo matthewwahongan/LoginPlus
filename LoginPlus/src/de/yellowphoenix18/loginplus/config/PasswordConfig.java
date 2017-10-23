@@ -27,6 +27,18 @@ public class PasswordConfig {
 		save();
 	}
 	
+	public static void setPremium(String uuid, boolean premium) {
+		cfg.set(uuid + ".Premium", premium);
+	}
+	
+	public static boolean getPremium(String uuid) {
+		boolean premium = false;
+		if(cfg.contains(uuid + ".Premium")) {
+			premium = cfg.getBoolean(uuid + ".Premium");
+		}
+		return premium;
+	}
+	
 	public static String getHashedPassword(String uuid) {
 		if(!users.contains(uuid)) {
 			users.add(uuid);
