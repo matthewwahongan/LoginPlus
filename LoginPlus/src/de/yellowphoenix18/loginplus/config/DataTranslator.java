@@ -58,7 +58,7 @@ public class DataTranslator {
 				System.out.println("[LoginPlus] Error no Data found!");
 			}
 		} else {
-			PasswordConfig.setPassword(uuid, password, hashtype);
+			PasswordConfig.setPassword(uuid, password, hashtype.toString());
 		}
 	}
 	
